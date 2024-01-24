@@ -1,0 +1,167 @@
+/*-------Home Page-------*/
+*{
+max-width: 100%;
+max-height: 100%;
+box-sizing: border-box;
+padding: 0;
+margin: 0;
+
+}
+
+.nav{
+  position: relative;
+  background-color: #5c6a73; 
+  box-shadow:0vh 0.4vh 1vh #f7f0f0;
+  border: #f7f0f0;
+  border-bottom-left-radius:10vh;
+  border-bottom-right-radius:10vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
+}
+
+/*body style*/
+#home-page-body{
+  background-image: url(pictures/pic-room1.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+   background-size: cover;
+  backdrop-filter: blur(2vh); 
+  overflow-x: hidden;/* to remove extar space of the screen */
+  overflow-y: scroll; /* allow the screen to scroll horizontally */
+
+ 
+}
+
+/* Writing next to the logo */
+
+.interior-design{
+position: relative;
+left: 43vh;
+}
+
+
+/* Home page animations & more */
+
+@keyframes slideInRight {
+    from {
+      transform: translateX(100vh);
+    }
+  
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  .container2{
+    animation: slideInRight 1.5s ease-in   ;
+    display: block;
+    padding: 5vh 7vh; 
+    margin: 0;
+    position: relative;
+    bottom:45vh;
+    left: 60vh;
+    }
+
+
+    @keyframes slideInLeft {
+        from {
+          transform: translateX(-40vh);
+        }
+      
+        to {
+          transform: translateX(0);
+        }
+      }
+      
+      #frame{
+        animation: slideInLeft 1.5s ease-in   ;
+        display: block;
+        padding: 5vh 7vh; 
+        position: relative;
+        top: 1vh;
+        left: 50vh;
+            }
+
+h1{
+   
+    color: #f7f0f0 ;
+    text-shadow: 16px 16px 4px rgba(0, 0, 0, 0.5);
+    font-family: "Domaine Sans Fine Regular Regular";
+    font-size: 15vh;
+
+
+}
+
+
+p{
+    color: #fbfbfb;
+    font-family: "Domaine Sans Fine Regular Regular", "sans-sarif"; 
+    font-size: 4vh; 
+    font-weight: lighter;
+    position: relative;
+    top: 2vh;
+    left: 30vh;
+    padding:0vh ;
+    margin: 0vh;
+
+}
+
+
+/* Home page Buttons */
+.btn{
+  display: block;
+  position: relative;
+  bottom: 7vh;
+  left: 160vh;
+  
+}
+
+
+
+
+#loginBtn, #signUpBtn{
+    background-color:#5c6a73;
+    font-family: "Domaine Sans Fine Regular Regular", "sans-sarif"; 
+    font-size: large;
+    color:#fafaf7;
+    border-radius: 1vh;
+    border-color:#ffffff;
+    transition: 0.3s;
+}
+
+
+
+#loginBtn{
+    padding: 1vh 6vh; 
+    margin-right: 3vh;
+
+}
+
+#signUpBtn{
+    padding: 1vh 5vh;
+
+}
+
+#loginBtn:hover, #loginBtn:active{
+  size: 20%;
+  background-color:#fafaf7;
+  color: #5c6a73;
+  box-shadow:0vh 0.4vh 1vh #f7f0f0;
+  transform: scale(1.1);
+
+
+}
+
+
+#signUpBtn:hover, #signUpBtn:active {
+    size: 20%;
+    background-color:#fafaf7;
+    color: #5c6a73;
+    box-shadow:0vh 0.4vh 1vh #f7f0f0;
+    transform: scale(1.1);
+ 
+}
+
+/*-------Sign up-------*/
