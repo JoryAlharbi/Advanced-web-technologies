@@ -1,0 +1,149 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(pictures/pic-room1.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    backdrop-filter: blur(2vh);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/* navigation bar */
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 150px;
+    height: 150px;
+    margin-right: 10px;
+}
+
+.nav{
+    position: relative;
+    background-color: #5c6a73; 
+    box-shadow:0vh 0.4vh 1vh #f7f0f0;
+    border: #f7f0f0;
+    border-bottom-left-radius:10vh;
+    border-bottom-right-radius:10vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  
+  }
+
+
+/* Writing next to the logo */
+
+.interior-design{
+    position: relative;
+    left: 43vh;
+    }
+    
+    
+
+/* login page */
+
+.box {
+    position: absolute;
+    top: 10pc;
+    right: 15pc;
+
+    border: 1px solid #bc2727;
+    padding: 90px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(2, 2, 2, 0.1);
+    backdrop-filter: blur(2vh);
+    background-color: #555;
+    background: rgba(0,0,0,0.5);
+
+
+}
+
+#welcome {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+#login {
+    box-shadow: 0 0 50px rgba(2, 2, 2, 0.1);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    width: 500px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    backdrop-filter: blur(2vh);
+
+}
+
+h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+h5 {
+    margin-bottom: 30px;
+    color: #333;
+    text-shadow: 1px 1px 1px #000;
+    text-indent: 40px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    text-align: left;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+button {
+    background-color: #5c6b73;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    size: 20%;
+    background-color:#fafaf7;
+    color: #5c6a73;
+    box-shadow:0vh 0.4vh 1vh #f7f0f0;
+    transform: scale(1.1);
+  
+  
+}
+
+button:active {
+    size: 20%;
+    background-color:#fafaf7;
+    color: #5c6a73;
+    box-shadow:0vh 0.4vh 1vh #f7f0f0;
+    transform: scale(1.1);
+
+}
