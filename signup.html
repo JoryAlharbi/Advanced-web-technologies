@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Negentropy-Sign Up</title>
+        <link rel="stylesheet" href="signup.css">
+        <link href="https://db.onlinewebfonts.com/c/02b0cfe9a43c6fc48f54c9bf6f59dbfb?family=Domaine+Sans+Fine+Regular+Regular" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="blur-overlay">
+<header>
+    <div class="nav">
+        <img src="pictures/Negentropy copy.png" class="logo" alt="logo" height="80" width="150" style="position: relative;top: 3vh; left: 5vh;">
+        <img src="pictures/interiorDesign.png" height="30" width="300"  style="position: relative; bottom: 6vh; left: 75vh;">
+    </div>
+
+</header>
+<div class="form-box">
+
+    <div id="signup">
+
+        <h1>Welcome</h1>
+
+    <form class="sign-up">
+
+       <h2>Sign up</h2>
+
+        <label for = "username">Username</label>
+
+        <input type="text" name="username" placeholder="username" required>
+
+        <label for = "email">Email</label>
+
+         <input type="email" name="email" placeholder="email" required>
+       
+         <label for = "password">Password</label>
+
+            <input type="password" name="password" placeholder="password" required>
+       
+            <label for = "password">Confirm Password</label>
+
+            <input type="password" name="confirmPassword" placeholder="password" required>
+
+            <label for="userType">User Type</label>
+            <select name="userType" required>
+                <option value="designer">Designer</option>
+                <option value="client">Client</option>
+            </select>
+        
+            <button type="button" onclick="signup()">Sign Up</button>
+        </form>
+        <h5 onclick="login()" >already have an account? click here to log in</h5>
+    </div>
+</div>
+    <script>
+        function signup(){
+        var username = document.querySelector('input[name = "username"]').value;
+        var email = document.querySelector('input[name = "email"]').value;
+        var password = document.querySelector('input[name = "password"]').value;
+        var confirmPassword = document.querySelector('input[name = "confirmPassword"]').value;
+        var userType = document.querySelector('select[name = "userType"]').value;
+
+        if(username && email && password && confirmPassword && userType){
+            if(password != confirmPassword){
+                alert("Passwords do not match")
+            }else{
+
+                if(userType.value == "designer"){
+                    window.location.href = "designer_homepage.html";
+                }
+                else if (userType.value == "client"){
+                    window.location.href = "clientHomePage.html";
+                }
+
+            }
+        }else {
+                alert("Please fill in all fields");
+                }
+    }
+
+        function login(){
+            window.location.href = "login.html";
+
+        }
+
+    </script>
+    </div>
+        </body>
+
+</html>
