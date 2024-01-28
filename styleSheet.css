@@ -1,5 +1,5 @@
 
-/*-------Sign up-------*/
+/*-------Login-------*/
 *{
     max-width: 100%;
     max-height: 100%;
@@ -18,6 +18,8 @@ body {
     overflow-x: hidden;
     backdrop-filter: blur(2vh);
     z-index: 1;
+    font-family: "Domaine Sans Fine Regular Regular";
+
 }
 
 /* navigation bar */
