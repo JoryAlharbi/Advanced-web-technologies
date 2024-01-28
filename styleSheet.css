@@ -5,6 +5,7 @@
     max-height: 100%;
     box-sizing: border-box;
 
+
 }
 
 body {
@@ -15,7 +16,6 @@ body {
     background-position: center;
     background-size: cover;
     overflow-x: hidden;
-    font-family: "Domaine Sans Fine Regular Regular";
     backdrop-filter: blur(2vh);
     z-index: 1;
 }
@@ -89,6 +89,8 @@ h2 {
     margin: 0;
     padding: 0;
     color: #ffffff;
+    font-family: "Domaine Sans Fine Regular Regular";
+
 }
 
 h5 {
@@ -98,6 +100,8 @@ h5 {
     text-indent: 40px;
     text-decoration: underline;
     cursor: pointer;
+    font-family: "Domaine Sans Fine Regular Regular";
+
     
 }
 
@@ -157,3 +161,43 @@ button:active {
     transform: scale(1.1);
 }
 
+
+/* Footer styling */
+footer {
+    color: #535e67;
+    padding: 30px 0;
+    text-align: center;
+    
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-content p {
+    font-size: 18px;
+    font-family: "Domaine Sans Fine Regular Regular";
+
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.contact-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.contact-link i {
+    margin-right: 8px;
+}
+
+.contact-link:hover {
+    text-decoration: underline;
+    color: #414f5e;
+}
