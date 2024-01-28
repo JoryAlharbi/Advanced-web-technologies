@@ -48,6 +48,8 @@ body {
 
   }
 
+
+
   /* login form */
 
 .form-box {
@@ -202,4 +204,41 @@ footer {
 .contact-link:hover {
     text-decoration: underline;
     color: #414f5e;
+}
+
+/* client homepage */
+
+.welcome-note {
+    color: #fff;
+    padding: 20px;
+    text-align: left;
+    font-family: "Domaine Sans Fine Regular Regular";
+
+}
+
+.client-info {
+    margin: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    border-color: #eee7e7;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(69, 69, 69, 0.5);
+    font-family: "Domaine Sans Fine Regular Regular";
+    color:#fff;
+
+}
+
+.logout {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+}
+
+.logout a {
+    display: block; 
+}
+
+.logout img {
+    width: 40px; 
+    height: auto; 
 }
