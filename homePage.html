@@ -13,11 +13,11 @@
         <img src="pictures/Negentropy copy.png" alt="logo" height="80" width="150" style="position: relative;top: 3vh; left: 5vh;">
        <img src="pictures/interiorDesign.png"class="interior-design" height="30" width="300"  style="position: relative;top: 1vh;">
        <div class="btn">
-        <button id="loginBtn">Log in</button>
+        <button onclick="login()" id="loginBtn">Log in</button>
         <!--new user?-->
-        <button id="signUpBtn">Sign up</button>
+        <button onclick="signup()" id="signUpBtn">Sign up</button>
         </div>
-        <p style="font-size: 2vh; left: 187vh; top: -4vh; display: none;">Don't have an account?</p>
+      
     </div>
     </header>
      
@@ -31,13 +31,16 @@
         <p id="slogan">We bring order to <em>Entropy</em></p>
     </div>
 
+    <script>
+        function signup(){
+            window.location.href = "signup.html";
+        }
+
+        function login(){
+            window.location.href = "login.html";
+        }
+    </script>
         
-    
-
-      
-    
-    
-
     
 </body>
 
