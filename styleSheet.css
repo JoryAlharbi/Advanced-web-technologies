@@ -242,3 +242,45 @@ footer {
     width: 40px; 
     height: auto; 
 }
+/* Styles for the table */
+.designers-table {
+    margin: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    border-color: #eee7e7;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(92, 106, 115, 0.37);
+    font-family: "Domaine Sans Fine Regular Regular";
+    color:#fff;
+}
+
+#designers-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#designers-table th, #designers-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+#designers-table th {
+    background-color: rgba(92, 106, 115, 0.37);
+}
+
+#designers-table img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+ /* Styles for the filter section */
+ .filter-section {
+    margin-bottom: 20px;
+}
+label {
+    margin-right: 10px;
+}

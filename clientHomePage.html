@@ -1,72 +1,118 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpg" href="pictures/logo.jpg"> 
-    <link rel="stylesheet" href="styleSheet.css">
-    <title>Home Page</title>
-</head>
-<body>
-    <header>
-    <div class="nav">
-        <img src="pictures/Negentropy copy.png" class="logo" alt="logo" height="80" width="150" style="position: relative;top: 3vh; left: 5vh;">
-        <img src="pictures/interiorDesign.png" height="30" width="300"  style="position: relative; bottom: 6vh; left: 75vh;">
-    </div>
-</header>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/jpg" href="pictures/logo.jpg"> 
+        <link rel="stylesheet" href="styleSheet.css">
+        <title>Home Page</title>
+    </head>
+    <body>
+        <header>
+        <div class="nav">
+            <img src="pictures/Negentropy copy.png" class="logo" alt="logo" height="80" width="150" style="position: relative;top: 3vh; left: 5vh;">
+            <img src="pictures/interiorDesign.png" height="30" width="300"  style="position: relative; bottom: 6vh; left: 75vh;">
+        </div>
+    </header>
 
-    <div class="logout">
-        <a href="homepage.html" title="Sign Out">
-        <img src="pictures/logout.png" alt="Logout">
-         </a>
-    </div>
+        <div class="logout">
+            <a href="homepage.html" title="Sign Out">
+            <img src="pictures/logout.png" alt="Logout">
+            </a>
+        </div>
 
-    <div class="welcome-note">
-        <h2>Welcome, <span id="clientFirstName">Amel</span>!</h2>
-    </div>
+        <div class="welcome-note">
+            <h2>Welcome, <span id="clientFirstName">Amel</span>!</h2>
+        </div>
 
-    <div class="client-info">
-        <h3>Client Information</h3>
-        <p><strong>First Name:</strong> Amel</p>
-        <p><strong>Last Name:</strong> Alfehaid</p>
-        <p><strong>Email:</strong> amel.alfehaid@gmail.com</p>
-    </div>
+        <div class="client-info">
+            <h3>Client Information</h3>
+            <p><strong>First Name:</strong> Amel</p>
+            <p><strong>Last Name:</strong> Alfehaid</p>
+            <p><strong>Email:</strong> amel.alfehaid@gmail.com</p>
+        </div>
 
-    <div class="designers-table">
-        <h2> interior Designers </h2>
-    
-<table style="width:100%">
-    <tr>
-      <th>Designer</th>
-      <th>Specialty</th>
-    </tr>
-    <tr>
-      <td>desiner</td>
-      <td>Vintage/Retro Design</td>
-      <td>Linus</td>
-    </tr>
-    <tr>
-      <td>16</td>
-      <td>14</td>
-      <td>10</td>
-    </tr>
-  </table>
-    </div>
+    <div class="designers-container"> 
+        
+        <div class="filter-section">
+            <label for="design-category">Select Design Category:</label>
+            <select id="design-category">
+                <option value="all">All</option>
+                <option value="Vintage/Retro Design">Vintage/Retro Design</option>
+                <option value="Luxury Interiors">Luxury Interiors</option>
+                <option value="modern">Modern</option>
+            </select>
+            <button onclick="filterDesigners()">Filter</button>
+            </div>
 
-    <div class="previous-requests">
+        <div class="designers-table">
+            <h2>Interior Designers</h2>
+            <table id="designers-table" style="width:100%">
+                <tr>
+                    <th>Designer</th>
+                    <th>Specialty</th>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="portfolio/lama-mohammed.html">
+                            <img src="pictures/designers logo/LM design.png" width="100px"><br>Lama Mohammed
+                        </a>
+                    </td>
+                    <td>Vintage/Retro Design</td>
+                    <td><a href="#">Link to request a design consultation</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="portfolio/malik-saud.html">
+                            <img src="pictures/designers logo/VV.png" width="100px"><br>Malik Saud
+                        </a>
+                    </td>
+                    <td>Luxury Interiors</td>
+                    <td><a href="#">Link to request a design consultation</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="portfolio/manar-saqr.html">
+                            <img src="pictures/designers logo/LL.png" width="100px"><br>Manar Saqr
+                        </a>
+                    </td>
+                    <td>Modern</td>
+                    <td><a href="#">Link to request a design consultation</a></td>
+                </tr>
+            </table>
+        </div>
+        </div>  
+    <script>
+        function filterDesigners() {
+            var category = document.getElementById("design-category").value;
+            var table = document.getElementById("designers-table");
+            var rows = table.getElementsByTagName("tr");
+
+            for (var i = 1; i < rows.length; i++) {
+                var designerCategory = rows[i].getElementsByTagName("td")[1].textContent.toLowerCase();
+
+                if (category === "all" || designerCategory.toLowerCase() === category.toLowerCase()) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+        <div class="previous-requests">
 
 
 
-    </div>
+        </div>
 
-</body>
+    </body>
 
-<footer>
-    <div class="footer-content">
-        <p>&copy; 2024 Negentropy </p>
-        <a href="contact.html" class="contact-link">
-            <i>Contact Us</i> 
-        </a>
-    </div>
-</footer>
-</html>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Negentropy </p>
+            <a href="contact.html" class="contact-link">
+                <i>Contact Us</i> 
+            </a>
+        </div>
+    </footer>
+    </html>
