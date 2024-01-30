@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/jpg" href="pictures/logo.jpg"> 
-        <link rel="stylesheet" href="styleSheet.css">
+        <link rel="stylesheet" href="clientStyling.css">
         <title>Home Page</title>
     </head>
     <body>
@@ -33,7 +33,7 @@
         </div>
 
     <div class="designers-container"> 
-        
+        <div class="filter-container">
         <div class="filter-section">
             <label for="design-category">Select Design Category:</label>
             <select id="design-category">
@@ -42,8 +42,11 @@
                 <option value="Luxury Interiors">Luxury Interiors</option>
                 <option value="modern">Modern</option>
             </select>
-            <button onclick="filterDesigners()">Filter</button>
+            <button class="FilterButton" onclick="filterDesigners()">
+                <img src="pictures/filter.png" alt="Filter">
+            </button>
             </div>
+        </div>
 
         <div class="designers-table">
             <h2>Interior Designers</h2>
@@ -59,7 +62,7 @@
                         </a>
                     </td>
                     <td>Vintage/Retro Design</td>
-                    <td><a href="#">Link to request a design consultation</a></td>
+                    <td><a href="#">request a design consultation</a></td>
                 </tr>
                 <tr>
                     <td>
@@ -68,7 +71,7 @@
                         </a>
                     </td>
                     <td>Luxury Interiors</td>
-                    <td><a href="#">Link to request a design consultation</a></td>
+                    <td><a href="#">request a design consultation</a></td>
                 </tr>
                 <tr>
                     <td>
@@ -77,7 +80,7 @@
                         </a>
                     </td>
                     <td>Modern</td>
-                    <td><a href="#">Link to request a design consultation</a></td>
+                    <td><a href="#">request a design consultation</a></td>
                 </tr>
             </table>
         </div>
