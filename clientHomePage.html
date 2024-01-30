@@ -22,7 +22,7 @@
         </div>
 
         <div class="welcome-note">
-            <h2>Welcome, <span id="clientFirstName">Amel</span>!</h2>
+            <h1>Welcome, <span id="clientFirstName">Amel</span>!</h1>
         </div>
 
         <div class="client-info">
@@ -33,7 +33,6 @@
         </div>
 
     <div class="designers-container"> 
-        <div class="filter-container">
         <div class="filter-section">
             <label for="design-category">Select Design Category:</label>
             <select id="design-category">
@@ -43,9 +42,7 @@
                 <option value="modern">Modern</option>
             </select>
             <button class="FilterButton" onclick="filterDesigners()">
-                <img src="pictures/filter.png" alt="Filter">
             </button>
-            </div>
         </div>
 
         <div class="designers-table">
@@ -56,7 +53,7 @@
                     <th>Specialty</th>
                 </tr>
                 <tr>
-                    <td>
+                    <td><!-- add the page for the request and e design portfolio page -->
                         <a href="portfolio/lama-mohammed.html">
                             <img src="pictures/designers logo/LM design.png" width="100px"><br>Lama Mohammed
                         </a>
@@ -65,7 +62,7 @@
                     <td><a href="#">request a design consultation</a></td>
                 </tr>
                 <tr>
-                    <td>
+                    <td><!-- add the page for the request and e design portfolio page -->
                         <a href="portfolio/malik-saud.html">
                             <img src="pictures/designers logo/VV.png" width="100px"><br>Malik Saud
                         </a>
@@ -74,7 +71,7 @@
                     <td><a href="#">request a design consultation</a></td>
                 </tr>
                 <tr>
-                    <td>
+                    <td><!-- add the page for the request and e design portfolio page -->
                         <a href="portfolio/manar-saqr.html">
                             <img src="pictures/designers logo/LL.png" width="100px"><br>Manar Saqr
                         </a>
@@ -103,9 +100,56 @@
         }
     </script>
         <div class="previous-requests">
-
-
-
+            <h2>previous Design Consultation Requests </h2>
+            <table  id="consultation-table" style="width:100%"> 
+                <tr>
+                    <th>Designer</th>
+                    <th>Room Type</th>
+                    <th>Room Dimensions</th>
+                    <th>Design Category</th>
+                    <th>Color Preferences</th>
+                    <th>Date of Request</th>
+                    <th>Status</th>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <img src="pictures/designers logo/LM design.png" width="100px"><br>Lama Mohammed
+                    </td>
+                    <td>Living Room</td>
+                    <td>10' x 15'</td>
+                    <td>Modern</td>
+                    <td>Neutral colors</td>
+                    <td>2024-02-01</td>
+                    <td>Pending Consultation</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="pictures/designers logo/ArtistryAlchemy.png" width="100px"><br>Joana AbdAlkareem
+                    </td>
+                    <td>Bed Room</td>
+                    <td>9' x 15'</td>
+                    <td>cozy</td>
+                    <td>Neutral colors</td>
+                    <td>2023-12-01</td>
+                    <td> <!-- add the page for the design consultation page -->
+                        <a href="DesignConsultation.html">
+                        consultation provided <br>
+                        <img src="pictures/cozy room.jpg" width="100px">
+                        </a>
+                    </td>
+                </tr>
+                <td>
+                    <img src="pictures/designers logo/uniqeform.png" width="100px"><br> Sarah majed
+                </td>
+                <td>Home Office</td>
+                <td>8' x 10'</td>
+                <td>Luxury Interiors</td>
+                <td>Dark Wood and Gold</td>
+                <td>2024-01-22</td>
+                <td>Consultation Declined</td>
+              </tr>    
+            </table>
         </div>
 
     </body>
