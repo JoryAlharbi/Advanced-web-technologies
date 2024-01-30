@@ -71,6 +71,11 @@
             
 
         }
+        h3{
+        text-shadow: -1px -1px 0  #5c6a73, 1px -1px 0  #5c6a73, -1px 1px 0  #5c6a73, 1px 1px 0  #5c6a73;
+        font-family: "Domaine Sans Fine Regular Regular";
+
+        }
 
         .logout {
             position: absolute;
