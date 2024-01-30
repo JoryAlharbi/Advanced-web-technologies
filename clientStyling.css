@@ -1,4 +1,4 @@
-        /*-------Login-------*/
+        /*-------client home page-------*/
         *{
             max-width: 100%;
             max-height: 100%;
@@ -142,65 +142,62 @@
             margin: 0 auto;
         }
 
-        
-        
-
         a {
             color: #fff;
 
         }
 
-/* Styles for the filter section */
-.filter-section {
-    position:absolute;
-    right: 180px;
-    top:480px;
-    width: 200px;
-    display: flex;
-    align-items: left;
-    margin-bottom: 20px;
-}
+        /* Styles for the filter section */
+        .filter-section {
+            position:absolute;
+            right: 180px;
+            top:520px;
+            width: 200px;
+            display: flex;
+            align-items: left;
+            margin-bottom: 20px;
+        }
 
-label {
-    margin-right: 10px;
-    font-size: 14px;
-    color: #ffffff; 
-    font-family:"Domaine Sans Fine Regular Regular";
-}
+        label {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #ffffff; 
+            font-family:"Domaine Sans Fine Regular Regular";
+        }
 
-select {
-    padding: 8px;
-    font-size: 14px;
-    border: 3px solid  #5c6a73; 
-    border-radius: 4px;
-    font-family:"Domaine Sans Fine Regular Regular";
-}
+        select {
+            padding: 8px;
+            font-size: 14px;
+            border: 3px solid  #5c6a73; 
+            border-radius: 4px;
+            font-family:"Domaine Sans Fine Regular Regular";
+        }
 
-/* Styles for the FilterButton */
-.FilterButton {
-    background-color: #5c6b73;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 4px;
-    
-}
+        /* Styles for the FilterButton */
+        .FilterButton {
+            background-color: #5c6b73;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 4px;
+            
+        }
 
-/* Hover and Active States */
-.FilterButton:hover {
-    size: 20%;
-    background-color:#fafaf7;
-    color: #5c6a73;
-    box-shadow:0vh 0.4vh 1vh #f7f0f0;
-    transform: scale(1.1);
-}
+        /* Hover and Active States */
+        .FilterButton:hover {
+            size: 20%;
+            background-color:#fafaf7;
+            color: #5c6a73;
+            box-shadow:0vh 0.4vh 1vh #f7f0f0;
+            transform: scale(1.1);
+        }
 
-.FilterButton:active {
-    size: 20%;
-    background-color:#fafaf7;
-    color: #5c6a73;
-    box-shadow: 0vh 0.4vh 1vh #f7f0f0;
-    transform: scale(1.1);}
+        .FilterButton:active {
+            size: 20%;
+            background-color:#fafaf7;
+            color: #5c6a73;
+            box-shadow: 0vh 0.4vh 1vh #f7f0f0;
+            transform: scale(1.1);}
 
         /* Styles for the table */
     
