@@ -2,10 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="/pictures/house-frame.png">
         <title>Negentropy-Sign Up</title>
         <link rel="stylesheet" href="signup.css">
-        <link rel="icon" type="image/png" href="pictures/house-frame.png"> 
-
         <link href="https://db.onlinewebfonts.com/c/02b0cfe9a43c6fc48f54c9bf6f59dbfb?family=Domaine+Sans+Fine+Regular+Regular" rel="stylesheet">
     </head>
 
@@ -13,73 +13,160 @@
         <div class="blur-overlay">
 <header>
     <div class="nav">
-        <img src="pictures/Negentropy copy.png" class="logo" alt="logo" height="80" width="150" style="position: relative;top: 3vh; left: 5vh;">
-        <img src="pictures/interiorDesign.png" height="30" width="300"  style="position: relative; bottom: 6vh; left: 75vh;">
+
+        <a  href = "homePage.html">
+        <img src="pictures/Negentropy copy.png" class="logo" alt="logo" title="logo" height="80" width="150" style="position: relative;top: 3vh; left: 5vh;">
+        </a>
+
+        <img src="pictures/interiorDesign.png" height="30" width="300"  style="position: relative; bottom: 6vh; left: 83vh;">
     </div>
 
 </header>
-<div class="form-box">
 
-    <div id="signup">
 
-        <h1>Welcome</h1>
+<div class="designerORclient">
+    <div class="typeButtons">
+    <button type="button" class="Designer" onclick="signupType()">Designer</button>
+    <button type="button" class="Client" onclick="signupType()">Client</button>
+</div>
+</div>
+
+
+<div class="form-box-designer">
+
+    <div id="signup-designer">
 
     <form class="sign-up">
 
        <h2>Sign up</h2>
 
-        <label for = "username">Username</label>
+        <label for = "FirstName">First Name</label>
+        <input type="text" id = "FirstName" name="FirstName" placeholder="First Name" required>
 
-        <input type="text" id="username" name="username" placeholder="username" required>
+        <label for = "LastName">Last Name</label>
+        <input type="text" id = "LastName" name="LastName" placeholder="Last Name" required>
 
-        <label for = "email">Email</label>
 
-         <input type="email" id= "email" name="email" placeholder="email" required>
+        <label for = "D-email">Email</label>
+         <input type="email" id = "D-email" name="email" placeholder="email" required>
        
-         <label for = "password">Password</label>
-
-            <input type="password" id = "password" name="password" placeholder="password" required>
+         <label for = "D-password">Password</label>
+            <input type="password" id = "D-password" name="password" placeholder="password" required>
        
-            <label for = "confirmPassword">Confirm Password</label>
+            <label for="brandName">Brand Name</label>
+            <input name="brandName" id = "brandName" placeholder="Brand Name" required>
 
-            <input type="password" id = "confirmPassword" name="confirmPassword" placeholder="password" required>
+           
+            <label for="InteriorDesignCategory">Interior Design Category</label>
+            <ul>
+             <li><input type="checkbox" id="Modern"   name="Category" value="Modern"><label for="Modern"> Modern</label></li>
+             <li><input type="checkbox" id="Country"  name="Category" value="Country"><label for="Country"> Country</label></li>
+             <li><input type="checkbox" id="Coastal"  name="Category" value="Coastal"><label for="Coastal"> Coastal</label></li>
+             <li><input type="checkbox" id="Bohemian" name="Category" value="Bohemian"><label for="Bohemian"> Bohemian</label></li>
+            </ul>
 
-            <label for="userType">User Type</label>
-            <select id = "userType" name="userType" required>
-                <option value="designer">Designer</option>
-                <option value="client">Client</option>
-            </select>
-        
-            <button type="button" onclick="signup()">Sign Up</button>
+
+            <label for="logo">Logo</label>
+            <input type="file" name="logo" id="logo">
+            
+
+    
+            <button type="button" onclick="signupDesigner()">Sign Up</button>
         </form>
         <h5 onclick="login()" >already have an account? click here to log in</h5>
+
+
     </div>
 </div>
+
+
+    <div class="form-box-client">
+<div id="signup-client">
+
+    <form class="sign-up">
+
+       <h2>Sign up</h2>
+
+        <label for = "FName">First Name</label>
+        <input type="text" id = "FName" name="FirstName" placeholder="First Name" required>
+
+        <label for = "LName">Second Name</label>
+        <input type="text" id = "LName" name="LastName" placeholder="Last Name" required>
+
+
+        <label for = "C-email">Email</label>
+         <input type="email" id = "C-email" name="email" placeholder="email" required>
+       
+         <label for = "C-password">Password</label>
+            <input type="password" id = "C-password" name="password" placeholder="password" required>
+    
+    
+            <button type="button" onclick="signupClient()">Sign Up</button>
+        </form>
+        <h5 onclick="login()" >already have an account? click here to log in</h5>
+
+
+    </div>
+</div>
+
+    
     <script>
-        function signup(){
-        var username = document.querySelector('input[name = "username"]').value;
+
+       function signupType(){
+        var Designer = document.querySelector(".Designer")
+        var Client = document.querySelector(".Client")
+        var formBoxDesigner = document.querySelector(".form-box-designer")
+        var formBoxClient = document.querySelector(".form-box-client")
+         var designerORclient = document.querySelector(".designerORclient")
+
+         if (event.target.classList.contains("Designer")) {
+         formBoxDesigner.style.display = "block";
+          formBoxClient.style.display = "none";
+            designerORclient.style.display = "none";
+        } else if (event.target.classList.contains("Client")) {
+             formBoxDesigner.style.display = "none";
+              formBoxClient.style.display = "block";
+              designerORclient.style.display = "none";
+             }
+        }
+
+
+
+        function signupDesigner(){
+        var FirstName = document.querySelector('input[name = "FirstName"]').value;
+        var LastName = document.querySelector('input[name = "LastName"]').value;
         var email = document.querySelector('input[name = "email"]').value;
         var password = document.querySelector('input[name = "password"]').value;
-        var confirmPassword = document.querySelector('input[name = "confirmPassword"]').value;
-        var userType = document.querySelector('select[name = "userType"]').value;
+        var brandName = document.querySelector('input[name = "brandName"]').value;
+        var logo = document.querySelector('input[name = "logo"]').value;
+        var interiorDesignCategories = Array.from(document.querySelectorAll('ul input[name="Category"]:checked')).map(category => category.value);
 
-        if(username && email && password && confirmPassword && userType){
-            if(password != confirmPassword){
-                alert("Passwords do not match")
-            }else{
 
-                if(userType.value == "designer"){
-                    window.location.href = "designer_homepage.html";
-                }
-                else if (userType.value == "client"){
-                    window.location.href = "clientHomePage.html";
-                }
+        if (FirstName && LastName && email && password && brandName && interiorDesignCategories.length > 0 && logo) {
 
-            }
-        }else {
-                alert("Please fill in all fields");
-                }
+      window.location.href = "designerHomePage.html";
     }
+
+   else {
+    alert("Please fill in all fields");
+  }
+}
+
+function signupClient(){
+
+        var FirstName = document.querySelector('input[name = "FirstName"]').value;
+        var LastName = document.querySelector('input[name = "LastName"]').value;
+        var email = document.querySelector('input[name = "email"]').value;
+        var password = document.querySelector('input[name = "password"]').value;
+
+    if( FirstName && LastName && email && password){
+
+        window.location.href = "clientHomePage.html"
+    }else{
+        alert("Please fill in all fields");
+
+    }
+}
 
         function login(){
             window.location.href = "LoginPage.html";
@@ -89,5 +176,13 @@
     </script>
     </div>
         </body>
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2024 Negentropy </p>
+                <a href="contact.html" class="contact-link">
+                    <i>Contact Us</i> 
+                </a>
+            </div>
+        </footer>
 
 </html>
