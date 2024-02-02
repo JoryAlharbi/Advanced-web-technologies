@@ -73,7 +73,7 @@
     
             <button type="button" onclick="signupDesigner()">Sign Up</button>
         </form>
-        <h5 onclick="login()" >already have an account? click here to log in</h5>
+        <h5 id="DForm" onclick="login()" >already have an account? click here to log in</h5>
 
 
     </div>
@@ -103,13 +103,21 @@
     
             <button type="button" onclick="signupClient()">Sign Up</button>
         </form>
-        <h5 onclick="login()" >already have an account? click here to log in</h5>
+        <h5 id="CForm" onclick="login()" >already have an account? click here to log in</h5>
 
 
     </div>
 </div>
 
-    
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 Negentropy </p>
+        <a href="contact.html" class="contact-link">
+            <i>Contact Us</i> 
+        </a>
+    </div>
+</footer>
+</div>
     <script>
 
        function signupType(){
@@ -127,6 +135,7 @@
              formBoxDesigner.style.display = "none";
               formBoxClient.style.display = "block";
               designerORclient.style.display = "none";
+              
              }
         }
 
@@ -166,7 +175,8 @@ function signupClient(){
         alert("Please fill in all fields");
 
     }
-}
+}  
+
 
         function login(){
             window.location.href = "LoginPage.html";
@@ -174,15 +184,6 @@ function signupClient(){
         }
 
     </script>
-    </div>
+   
         </body>
-        <footer>
-            <div class="footer-content">
-                <p>&copy; 2024 Negentropy </p>
-                <a href="contact.html" class="contact-link">
-                    <i>Contact Us</i> 
-                </a>
-            </div>
-        </footer>
-
 </html>
