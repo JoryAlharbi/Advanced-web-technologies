@@ -2,24 +2,25 @@
 <html>
     <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Negentropy-Home page</title>
 <link href="https://db.onlinewebfonts.com/c/02b0cfe9a43c6fc48f54c9bf6f59dbfb?family=Domaine+Sans+Fine+Regular+Regular" rel="stylesheet">
-<link rel="stylesheet" href="homePage.css">
 <link rel="icon" type="image/png" href="pictures/house-frame.png"> 
-
+<link rel="stylesheet" href="homePage.css">
 </head>
 
 <body id="home-page-body">
     <header>
         <div class="nav">
-        <img src="pictures/Negentropy copy.png" alt="logo" height="80" width="150" style="position: relative;top: 3vh; left: 5vh;">
+        <img src="pictures/Negentropy copy.png" alt="logo" title="logo" height="80" width="150" style="position: relative;top: 3vh; left: 5vh;">
        <img src="pictures/interiorDesign.png"class="interior-design" height="30" width="300"  style="position: relative;top: 1vh;">
        <div class="btn">
-        <button onclick="login()" id="loginBtn">Log in</button>
+
+        <button onclick="login()" id="loginBtn" title="Log in">Log in</button>
+
         <!--new user?-->
-        <button onclick="signup()" id="signUpBtn">Sign up</button>
+        <button onclick="signup()" title="Sign up" id="signUpBtn">Sign up</button>
         </div>
-      
     </div>
     </header>
      
@@ -33,20 +34,26 @@
         <p id="slogan">We bring order to <em>Entropy</em></p>
     </div>
 
+    <footer>
+        <div class="footer-content">
+            <p style=" color: #9DB4C0;">&copy; 2024 Negentropy </p>
+            <a href="contact.html" class="contact-link">
+                <i>Contact Us</i> 
+            </a>
+        </div>
+    </footer>
+    
+
     <script>
         function signup(){
             window.location.href = "signup.html";
         }
 
         function login(){
-            window.location.href = "LoginPage.html";
+            window.location.href = "loginPage.html";
         }
     </script>
-        
-    
+
 </body>
-
-
-
 
 </html>
