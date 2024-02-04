@@ -5,52 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Addition</title>
     <link rel="logo" href="pictures/logo.jpg">
-    <link rel="stylesheet" href="styles.css">
+  
+    <link rel="stylesheet" href="add2.css">
+    
+      
 
 
 </head>
 
 <body>
+    <script> 
+        function redirect(){             //designer page        
+            window.location=
+        }
+    </script>
 
 
 
-    <nav class="breadcrumbs">
-        <ul>
-            <li><a href="clientHomePage.html">Home</a>  </li>
-           
-        </ul>
-    </nav>
+                      
+<header>
+<nav class="breadcrumbs">
+    <ul>
+        <li><a href=""></a>Designer home page</a>  </li><!--Desinerhomepage-->
+        <li><a href="AddtionPage.html">AddtionProject</a>  </li>
+
+    </ul>
+</nav>  
+</header>
 
 
-<h2>Add New Project</h2>
+
 
 <main>
     
-<form  methode="" action="POST" id="newproject">
-<label for="ProjectName" >Project Name : </label>
-<input type="text" name="ProjectName" id="ProjectName" value="ProjectName">
-<br>
-<label for="ProjectImage">Project Image : </label>
-<input type="file" name="ProjectImage"id="ProjectImage"  value="ProjectImage" >
-<br>
-<label for="Category">Design Category : </label>
-<select name="Category">
-<option>Modren</option>
-<option>Country</option>
-<option>Coastal</option>
-<option>Classic</option>
-</select>
-<br>
-<label for="Description" > Description :</label>
-<textarea name="Description">
+ 
+<div class="container"> 
 
-</textarea>
+    <div class="form"> <!--all content for design&form -->  
+        <div class="form-design">    <!--form img-->  
+            <img src="Negentropy copy.png"   alt="">
 
-</form>
-<p>Add new project to design portfolio !</p>
-<input type="submit" value="Add" onclick=""><!--Designer page-->
+         </div>
 
+         <div class="projectform">    <!--form content container-->  
+        <form  methode="" action="POST" id="newproject">
+            <h2 class="title">Add New Project</h2>
+            <div class="input">    <!--for each entry-->  
+                <label for="ProjectName" >Project Name : </label>
+                <input type="text" name="ProjectName" id="ProjectName" placeholder="ProjectName" class="input-box">
+            </div>
+     
+            <div class="input">
+        <label for="ProjectImage">Project Image : </label>
+        
+
+        <input type="file" name="ProjectImage"id="ProjectImage"  value="ProjectImage"  class="input-box">
+        </div>
+
+        <div class="input">
+
+        
+        <label for="Category">Design Category : </label>
+        <select name="Category">
+        <option>Modren</option>
+        <option>Country</option>
+        <option>Coastal</option>
+        <option>Bohemian</option>
+        </select>
+         </div>
+        <div class="textarea">
+
+        
+        <label for="Description" > Description :</label><br>
+        <textarea name="Description" >
+        
+        </textarea>
+       </div>
+       <p>Add new project to design portfolio!</p>
+       
+          <input type="submit" value="Add" onclick=" redirect();" id="add" class="input-box"><!--Designer page-->
+        
+        </form>
+       
+     </div>
+   
+
+
+    </div>
+
+
+
+
+
+
+
+    
+
+</div>
 </main>
+
+
+
+
 <footer>
     <div class="footer-content">
         <p>&copy; 2024 Negentropy</p>
