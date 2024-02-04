@@ -1,0 +1,154 @@
+        /*-------client home page-------*/
+        *{
+            max-width: 100%;
+            max-height: 100%;
+            box-sizing: border-box;
+
+
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url(pictures/background2.jpg);
+            background-repeat: repeat;
+            background-position: center;
+            background-size: cover;
+            overflow-x: hidden;
+            backdrop-filter: blur(2vh);
+            z-index: 1;
+            font-family: "Domaine Sans Fine Regular Regular";
+
+        }
+        /* navigation bar */
+
+        .logo {
+            display: flex;
+        }
+
+        .logo img {
+            width: 150px;
+            height: 150px;
+            padding-right: 0;
+            margin-right: 0;
+        }
+
+        .nav{
+            position: relative;
+            background-color: #5c6a73; 
+            box-shadow:0vh 0.4vh 1vh #f7f0f0;
+            border: #f7f0f0;
+            border-bottom-left-radius:10vh;
+            border-bottom-right-radius:10vh;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+
+        }
+
+        /* Footer styling */
+        footer {
+            color: #ffffff ;
+            padding: 10px 0;
+            text-align: center;
+            background-color: #5c6a73;
+            backdrop-filter: blur(2px);
+            box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-content p {
+            font-size: 18px;
+            font-family: "Domaine Sans Fine Regular Regular";
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .contact-link {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-link i {
+            margin-right: 8px;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+            color: #f5f8fa;
+        }
+
+/* Additional styles for the portfolio page */
+
+.nameAndLogo {
+    text-align: center;
+    margin: 20px;
+}
+
+.nameAndLogo h1 {
+    font-size: 40px;
+    color: #fff;
+    text-shadow: -1px -1px 0 #5c6a73, 1px -1px 0 #5c6a73, -1px 1px 0 #5c6a73, 1px 1px 0 #5c6a73;
+}
+
+.nameAndLogo img {
+    width: 320px;
+    display: block;
+    margin: 20px auto;
+}
+
+.about {
+    margin: 20px;
+    padding: 20px;
+    color: #fff;
+    background-color: rgba(92, 106, 115, 0.37); /* Set the background color for the block */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+}
+
+ hr {
+    background-color: #fff;
+    height: 2px;
+    border: none;
+    margin: 15px 0;
+}
+
+.about h2 {
+    font-size: 30px;
+    text-shadow: -1px -1px 0 #5c6a73, 1px -1px 0 #5c6a73, -1px 1px 0 #5c6a73, 1px 1px 0 #5c6a73;
+}
+
+.about p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.about img {
+    max-width: 320px;
+    height: auto;
+    margin: 10px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+
+.breadcrumbs {
+    color: #2a3238; 
+    font-size: 16px;
+    font-family: "Domaine Sans Fine Regular Regular";
+}
+
+.breadcrumbs a {
+    color: #2a3238; 
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}

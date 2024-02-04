@@ -64,9 +64,10 @@
             border-radius: 10px;
             border-color: #eee7e7;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: rgba(64, 63, 63, 0.5);
+            background-color: rgba(92, 106, 115, 0.37);
             font-family: "Domaine Sans Fine Regular Regular";
             color:#fff;
+            font-size: 18px;
             
 
         }
@@ -120,7 +121,7 @@
             border-radius: 10px;
             border-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color:  rgba(64, 63, 63, 0.5);
+            background-color: rgba(92, 106, 115, 0.37);
             font-family: "Domaine Sans Fine Regular Regular";
             color:#fff;
         }
@@ -214,7 +215,7 @@
             border-radius: 10px;
             border-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color:  rgba(64, 63, 63, 0.5);
+            background-color: rgba(92, 106, 115, 0.37);
             font-family: "Domaine Sans Fine Regular Regular";
             color:#fff;
         }
