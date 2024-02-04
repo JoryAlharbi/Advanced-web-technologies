@@ -1,0 +1,310 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    color: #f7f0f0;
+  
+    
+} 
+
+
+body ,input ,select
+{
+    font-family:  Arial, Helvetica, sans-serif;
+}
+.container{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem;
+   
+    background: #5c6a73;
+
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+  
+
+
+}
+.form{
+
+    grid-template-columns: repeat(2,0.5fr);
+   
+   
+    
+    background-color: #5c6a73;
+    width: 100%;
+    max-width: 820px;
+    height:99vh;
+   
+
+    border-radius: 10px;
+    box-shadow: 0 0 25px 10px rgba(0,0, 0, 0.5);
+    z-index: 1000;
+    display: grid;
+    grid-template-columns: repeat(2,0.5fr);
+
+
+}
+
+
+/*background img*/
+
+.form-design {
+   
+
+    background-position: center;
+    background-size: cover;
+ 
+
+    border-radius: 10px;
+    position: relative;
+    width:100%;
+    height: 99vh;
+    background-image: url("1b0ba65e-00a8-4e68-ae94-5f89c0b3bb6c.jpeg")
+    
+   
+   
+}
+/*logo img*/
+img{
+  
+    
+margin-top: 30%;
+
+   width: 100%;
+   backdrop-filter: blur(0.3rem);
+   position: relative;
+   background-size: cover;
+    z-index: 100000;
+
+
+
+}
+
+
+form{
+    padding:2.3rem ;
+    z-index:100;
+    overflow: hidden;
+    position: relative;
+  
+    border-radius: 9px;
+ 
+   
+
+   
+
+}
+
+/*form title*/
+.title{
+ font-weight: bold;
+ color:whitesmoke;
+ color: #253237;
+ color:whitesmoke;
+  font-size:1.5rem ;
+  line-height: 2;
+  margin-bottom:1.2rem ;
+  
+
+}
+.input{
+    position: relative;
+    margin:0.8rem 0 ;
+}
+
+input{
+  width:100%; 
+  outline: none;
+ 
+  
+  border: 2px solid  rgb(162, 160, 160);
+  
+  padding: 0.5rem 1.2rem;
+  font-weight: bold;
+  font-size: 0.90rem;
+  letter-spacing: 0.3px;
+  margin:0.5rem;
+  border-radius: 10px;
+  transition: 0.3s;
+  color: #253237;
+  background-color: #f7f0f0;
+  
+
+}
+
+
+
+
+/*button*/
+#send{
+    padding:0.6rem 1.3rem;
+
+    border: 3px solid  #494f52;
+    font-size: 0.95rem;
+    color: black;
+    border-radius: 23px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+   
+    background-color:#9DB4C0;
+
+}
+
+/*menue  font color */
+select option,select{
+    color: black;
+}
+
+/*Explanatory phrase*/
+p{
+    font-size: 15px;
+    padding-left: 1.8rem;
+    color: #CED0CE; 
+    
+     text-align: center;
+     padding-top:0.2rem;
+}
+
+
+label{
+  
+    color:whitesmoke;
+    padding: 1rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+
+}
+/* room dimensions div*/
+.dm-box{
+    width: 60%;
+
+    display: flex;
+    padding: 8px;
+    margin: 10px 2px;
+   
+
+
+}
+/* room dimensions entry*/
+.dm-box input{
+    width: 100%;
+
+    
+    padding: 10px;
+    margin: 3px  2px;
+   
+
+
+}
+
+
+
+
+
+
+#save:hover,#add:hover{
+    background-color:#253237;
+    border-radius: 23px;
+    color: #f7f0f0;
+
+}
+
+
+
+ 
+
+#send:active {
+    size: 10%;
+    background-color:#fafaf7;
+    color: #253237;
+    box-shadow:0vh 0.4vh 1vh #f7f0f0;
+    transform: scale(0.95);
+
+}
+input:active {
+    size: 10%;
+   
+    color: #253237;
+    box-shadow:0vh 0.4vh 1vh #f7f0f0;
+    transform: scale(0.9);
+
+}
+
+input, select{
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#send:hover{
+    size: 20%;
+    background-color:#fafaf7;
+    color: #5c6a73;
+    box-shadow:0vh 0.4vh 1vh #f7f0f0;
+    transform: scale(1.1);
+
+
+}
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+footer {
+    color: #9DB4C0 ;
+    padding: 10px 0;
+    text-align: center;
+    background-color: #5c6a73;
+    backdrop-filter: blur(2px);
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-content p {
+    font-size: 18px;
+    font-family: "Domaine Sans Fine Regular Regular";
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.contact-link {
+    text-decoration: none;
+    color: #9DB4C0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.contact-link i {
+    margin-right: 8px;
+}
+
+.contact-link:hover {
+    text-decoration: underline;
+    color: #f5f8fa;
+}
+
