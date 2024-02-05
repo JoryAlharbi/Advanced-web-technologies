@@ -10,7 +10,7 @@
 
 body ,input ,select
 {
-    font-family:  Arial, Helvetica, sans-serif;
+    font-family: "Domaine Sans Fine Regular Regular";
 }
 .container{
     position: relative;
@@ -102,10 +102,7 @@ form{
 
 /*form title*/
 .title{
- font-weight: bold;
- color:whitesmoke;
- color: #253237;
- color:whitesmoke;
+ text-shadow: -1px -1px 0  #5c6a73, 1px -1px 0  #5c6a73, -1px 1px 0  #5c6a73, 1px 1px 0  #5c6a73;
   font-size:1.5rem ;
   line-height: 2;
   margin-bottom:1.2rem ;
