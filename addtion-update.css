@@ -3,12 +3,16 @@
     padding:0;
     box-sizing: border-box;
     color: #f7f0f0;
+    font-family: "Domaine Sans Fine Regular Regular";
+
 } 
 
 
-body ,input ,textarea
-{
-    font-family:  Arial, Helvetica, sans-serif;
+body{
+    background: #5c6a73;
+    font-family: "Domaine Sans Fine Regular Regular";
+
+
 }
 
 
@@ -19,6 +23,7 @@ body ,input ,textarea
     padding: 2rem;
     
     background: #5c6a73;
+    font-family: "Domaine Sans Fine Regular Regular";
 
     overflow: hidden;
     display: flex;
@@ -61,7 +66,7 @@ body ,input ,textarea
     position: relative;
     width:100%;
     height: 99vh;
-    background-image: url("1b0ba65e-00a8-4e68-ae94-5f89c0b3bb6c.jpeg")
+    background-image: url("pictures/1b0ba65e-00a8-4e68-ae94-5f89c0b3bb6c.jpeg")
     
    
    
@@ -101,8 +106,10 @@ form{
 
 .title{
  font-weight: bold;
- color:whitesmoke;
-  font-size:1.5rem ;
+ color: #fff; 
+ font-family: "Domaine Sans Fine Regular Regular";
+
+text-shadow: -1px -1px 0 #374045, 1px -1px 0 #374045, -1px 1px 0 #374045, 1px 1px 0 #374045;  font-size:1.5rem ;
   line-height: 2;
   margin-bottom:1.2rem ;
   
@@ -274,6 +281,24 @@ footer {
 
 
 
+/* breadcumps */ 
+
+.breadcrumbs {
+    background-color: #5c6a73;
+    margin-top: 30px;
+    color: #000000; 
+    font-size: 16px;
+    font-family: "Domaine Sans Fine Regular Regular";
+}
+
+.breadcrumbs a {
+    color: #000000; 
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
 
 
 

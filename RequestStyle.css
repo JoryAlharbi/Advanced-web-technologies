@@ -13,6 +13,8 @@ body
 {
    
     background: #5c6a73;
+    font-family: "Domaine Sans Fine Regular Regular";
+
 
 }
 .container{
@@ -20,7 +22,8 @@ body
     width: 100%;
     min-height: 100vh;
     padding: 2rem;
-   
+    font-family: "Domaine Sans Fine Regular Regular";
+
     background: #5c6a73;
 
     overflow: hidden;
@@ -105,7 +108,7 @@ form{
 
 /*form title*/
 .title {
-    color: #fff; /* Adjust the text color to a lighter shade */
+    color: #fff;
     text-shadow: -1px -1px 0 #374045, 1px -1px 0 #374045, -1px 1px 0 #374045, 1px 1px 0 #374045;
     font-size: 1.5rem;
     line-height: 2;
