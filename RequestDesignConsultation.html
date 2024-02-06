@@ -15,18 +15,11 @@
 
 </head>
 
-<body>
-    <header>
-        <nav class="breadcrumbs">
-            <ul>
-                <li><a href=""></a>Designer home page</a>  </li><!--Desinerhomepage-->
-                <li><a href="AddtionPage.html">AddtionProject</a>  </li>
-        
-            </ul>
-        </nav>  
-        </header>
-
-
+<body>   
+    <div class="breadcrumbs">
+        <a href="clientHomePage.html">Home</a> &gt; <span>Request Design Consultation</span>
+    </div>
+   
 <main>
     
    
@@ -35,7 +28,7 @@
 
     <div class="form">
         <div class="form-design">
-            <img src="Negentropy copy.png"   alt="" title="">
+            <img src="pictures/Negentropy copy.png"   alt="" title="">
 
          </div>
 
@@ -90,11 +83,16 @@
 
                 </div>
 
-                <input type="submit" value="Send" onclick=""  id="send">
+                <input type="button" value="Send" onclick="redirect()"  id="send">
           
         
               </form>
        
+              <script> 
+                function redirect(){               
+                    window.location.href="clientHomePage.html";
+                }
+            </script>
      </div>
      
 
