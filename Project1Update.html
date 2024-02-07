@@ -18,11 +18,6 @@
 </head>
 
 <body>
-    <script> 
-        function redirect(){             //designer page        
-            window.location=
-        }
-    </script>
 
 
 
@@ -88,7 +83,7 @@
        </div>
        <p>Add new project to design portfolio!</p>
        
-          <input type="submit" value="Add" onclick=" redirect();" id="Save" class="input-box"><!--Designer page-->
+          <input type="submit" value="Add" onclick="redirect()" id="Save" class="input-box"><!--Designer page-->
         
         </form>
        
@@ -99,7 +94,11 @@
     </div>
 
 
-
+  <script> 
+                function redirect(){             
+                    window.location.href="#";
+                }
+            </script>
 
 
 
