@@ -1,3 +1,4 @@
+
 /*-------Sign up-------*/
 *{
     max-width: 100%;
@@ -242,7 +243,7 @@ ul {
     width: 10vh;
     height: 1vh;
     padding: 0;
-    margin-bottom: 22vh ;
+    margin-bottom: 28vh ;
   }
 
   
@@ -265,7 +266,7 @@ button {
     background-color: #5c6b73;
     color: #fff;
     padding: 10px 15px;
-    margin-top: 10vh ;
+    margin-top: 8vh ;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -334,5 +335,4 @@ button:active {
             text-decoration: underline;
             color: #f5f8fa;
         }
-
 
