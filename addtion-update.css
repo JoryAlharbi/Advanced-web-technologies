@@ -308,7 +308,24 @@ footer {
 
 
 
+/* breadcumbs */ 
 
+.breadcrumbs {
+    background-color: #5c6a73;
+    margin-top: 30px;
+    color: #000000; 
+    font-size: 16px;
+    font-family: "Domaine Sans Fine Regular Regular";
+}
+
+.breadcrumbs a {
+    color: #000000; 
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
 
 
 
