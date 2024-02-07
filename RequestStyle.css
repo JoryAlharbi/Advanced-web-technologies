@@ -184,28 +184,37 @@ label{
     
 
 }
+
 /* room dimensions div*/
 .dm-box{
-    width: 60%;
+    width: 90%;
 
     display: flex;
     padding: 8px;
-    margin: 10px 2px;
+    margin: 8px 2px;
+    justify-content: space-around;
    
 
 
 }
 /* room dimensions entry*/
 .dm-box input{
-    width: 100%;
+    width: 85%;
 
     
     padding: 10px;
-    margin: 3px  2px;
+    margin: 4px  2px;
    
 
 
 }
+
+
+
+
+
+
+
 
 
 
