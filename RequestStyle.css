@@ -221,7 +221,7 @@ label{
 
 
 
-#save:hover,#add:hover{
+#send:hover{
     background-color:#253237;
     border-radius: 23px;
     color: #f7f0f0;
