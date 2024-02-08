@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provide Consultation</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            color: #f7f0f0;
+            font-family: "Domaine Sans Fine Regular Regular";
+        }
+
+        body {
+            background: #5c6a73;
+            font-family: "Domaine Sans Fine Regular Regular";
+        }
+
+        .container{
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding: 2rem;
+            background: #5c6a73;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form{
+            background-color: #5c6a73;
+            width: 100%;
+            max-width: 820px;
+            height:99vh;
+            border-radius: 10px;
+            box-shadow: 0 0 25px 10px rgba(0,0, 0, 0.5);
+            z-index: 1000;
+            display: grid;
+            grid-template-columns: repeat(2,0.5fr);
+        }
+
+        .form-design {
+            background-position: center;
+            background-size: cover;
+            border-radius: 10px;
+            position: relative;
+            width:100%;
+            height: 99vh;
+            background-image: url("../pictures/1b0ba65e-00a8-4e68-ae94-5f89c0b3bb6c.jpeg");
+        }
+
+        img {
+            margin-top: 30%;
+            width: 100%;
+            backdrop-filter: blur(0.3rem);
+            position: relative;
+            background-size: cover;
+            z-index: 100000;
+        }
+
+        form {
+            padding: 2.3rem;
+            z-index: 100;
+            overflow: hidden;
+            position: relative;
+            border-radius: 9px;
+        }
+
+        .title {
+            color: #fff;
+            text-shadow: -1px -1px 0 #374045, 1px -1px 0 #374045, -1px 1px 0 #374045, 1px 1px 0 #374045;
+            font-size: 1.5rem;
+            line-height: 2;
+        }
+
+        textarea {
+            color: #5c6a73;
+            width: 100%;
+            min-height: 100px;
+            resize: vertical;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        ::placeholder {
+            color: gray;
+            opacity: 1;
+        }
+
+        #send {
+            padding: 0.6rem 1.3rem;
+            border: 3px solid  #494f52;
+            font-size: 0.95rem;
+            color: black;
+            border-radius: 23px;
+            outline: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+            background-color: #9DB4C0;
+        }
+
+        #send:hover {
+            size: 20%;
+            background-color: #fafaf7;
+            color: #5c6a73;
+            box-shadow: 0vh 0.4vh 1vh #f7f0f0;
+            transform: scale(1.1);
+        }
+
+        footer {
+            color: #9DB4C0;
+            padding: 10px 0;
+            text-align: center;
+            background-color: #5c6a73;
+            backdrop-filter: blur(2px);
+            box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-content p {
+            font-size: 18px;
+            font-family: "Domaine Sans Fine Regular Regular";
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .contact-link {
+            text-decoration: none;
+            color: #9DB4C0;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-link i {
+            margin-right: 8px;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+            color: #f5f8fa;
+        }
+    </style>
+</head>
+<body>
+<main>
+<div class="container">
+    <div class="form">
+        <div class="form-design">
+            <img src="../pictures/Negentropy copy.png" alt="" title="">
+        </div>
+        <div class="projectform">
+            <h2 class="title">Design Consultation</h2>
+            <div class="Consultation">
+                <form method="" action="POST">
+                    <h3 class="titles">Request Information:</h3>
+                    <textarea readonly class="ascii" rows="10" cols="50"> 
+Clinet: Najlaa Ali 
+Room: Living Room
+Dimensions: 5x5m
+Design Category: Classic
+Color Preferences: Light Brown and Beige
+Date: 3/5/2024
+                    </textarea>
+                    <h3 class="titles">Consultation:</h3>
+                    <textarea name="consultation" rows="10" col="10" placeholder="Write your consultation here!"></textarea>
+                    <h3 class="titles">Upload Image:</h3>
+                    <input type="file" id="myFile" name="filename">
+                    <input type="button" value="Send" onclick="redirect()" id="send">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+       <script>
+        
+        function redirect(){               
+                    window.location.href="DesignerHomepage.html";
+                }
+            
+        </script>
+</main>
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 Negentropy</p>
+        <a href="contact.html" class="contact-link">
+            <i>Contact Us</i>
+        </a>
+    </div>
+</footer>
+</body>
+</html>
+
