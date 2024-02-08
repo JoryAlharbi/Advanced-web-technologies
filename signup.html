@@ -47,11 +47,11 @@
         <input type="text" id = "LastName" name="LastName" placeholder="Last Name" required>
 
 
-        <label for = "D-email">Email</label>
-         <input type="email" id = "D-email" name="email" placeholder="email" required>
+        <label for = "designer-email">Email</label>
+         <input type="email" id = "designer-email" name="email" placeholder="email" required>
        
-         <label for = "D-password">Password</label>
-            <input type="password" id = "D-password" name="password" placeholder="password" required>
+         <label for = "designer-password">Password</label>
+            <input type="password" id = "designer-password" name="password" placeholder="password" required>
        
             <label for="brandName">Brand Name</label>
             <input name="brandName" id = "brandName" placeholder="Brand Name" required>
@@ -96,11 +96,11 @@
         <input type="text" id = "LName" name="LastName" placeholder="Last Name" required>
 
 
-        <label for = "C-email">Email</label>
-         <input type="email" id = "C-email" name="email" placeholder="email" required>
+        <label for = "client_email">Email</label>
+         <input type="email" id = "client-email" name="email" placeholder="email" required>
        
-         <label for = "C-password">Password</label>
-            <input type="password" id = "C-password" name="password" placeholder="password" required>
+         <label for = "client-password">Password</label>
+            <input type="password" id = "client-password" name="password" placeholder="password" required>
     
     
             <button type="button" onclick="signupClient()">Sign Up</button>
@@ -141,6 +141,24 @@
              }
         }
 
+        function signupClient(){
+
+        var FName = document.getElementById("FName").value;
+        var LName = document.getElementById("LName").value;
+        var email = document.getElementById("client-email").value;
+        var pswd = document.getElementById("client-password").value;
+
+            if(FName && LName && email && pswd){
+
+            window.location.href = "clientHomePage.html";
+
+            }  
+            }
+
+        function login(){
+              window.location.href = "LoginPage.html";
+
+                }
 
 
         function signupDesigner(){
@@ -155,35 +173,12 @@
 
         if (FirstName && LastName && email && password && brandName && interiorDesignCategories.length > 0 && logo) {
 
-      window.location.href = "DesignerHomepage.html";
+      window.location.href = "designerHomePage.html";
     }
 
-   else {
-    alert("Please fill in all fields");
-  }
+   
 }
 
-function signupClient(){
-
-        var FirstName = document.querySelector('input[name = "FirstName"]').value;
-        var LastName = document.querySelector('input[name = "LastName"]').value;
-        var email = document.querySelector('input[name = "email"]').value;
-        var password = document.querySelector('input[name = "password"]').value;
-
-    if( FirstName && LastName && email && password){
-
-        window.location.href = "clientHomePage.html"
-    }else{
-        alert("Please fill in all fields");
-
-    }
-}  
-
-
-        function login(){
-            window.location.href = "LoginPage.html";
-
-        }
 
     </script>
    
