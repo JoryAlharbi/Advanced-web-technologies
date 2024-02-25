@@ -38,7 +38,7 @@
 
     <form class="sign-up">
 
-       <h2>Sign up</h2>
+       <h2>Sign up for <em>Designer</em></h2>
 
         <label for = "FirstName">First Name</label>
         <input type="text" id = "FirstName" name="FirstName" placeholder="First Name" required>
@@ -87,7 +87,7 @@
 
     <form class="sign-up">
 
-       <h2>Sign up</h2>
+       <h2>Sign up for <em>Client</em></h2>
 
         <label for = "FName">First Name</label>
         <input type="text" id = "FName" name="FirstName" placeholder="First Name" required>
@@ -123,20 +123,20 @@
     <script>
 
        function signupType(){
-        var Designer = document.querySelector(".Designer")
-        var Client = document.querySelector(".Client")
-        var formBoxDesigner = document.querySelector(".form-box-designer")
-        var formBoxClient = document.querySelector(".form-box-client")
+        var Designer = document.querySelector(".Designer")//designer button
+        var Client = document.querySelector(".Client")//client button
+        var formBoxDesigner = document.querySelector(".form-box-designer")//designer form
+        var formBoxClient = document.querySelector(".form-box-client")//client form
          var designerORclient = document.querySelector(".designerORclient")
 
          if (event.target.classList.contains("Designer")) {
          formBoxDesigner.style.display = "block";
           formBoxClient.style.display = "none";
-            designerORclient.style.display = "none";
+           
         } else if (event.target.classList.contains("Client")) {
              formBoxDesigner.style.display = "none";
               formBoxClient.style.display = "block";
-              designerORclient.style.display = "none";
+             
               
              }
         }
