@@ -1,168 +1,226 @@
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="pictures/house-frame.png"> 
-        <link rel="stylesheet" href="clientStyling.css">
-        <link href="https://db.onlinewebfonts.com/c/02b0cfe9a43c6fc48f54c9bf6f59dbfb?family=Domaine+Sans+Fine+Regular+Regular" rel="stylesheet">
+<?php
+session_start();
 
-        <title>Home Page</title>
-    </head>
-    <body>
-        <header>
+$conn = mysqli_connect("localhost", "root", "root", "negentropydb");
+
+if (mysqli_connect_errno()) {
+    echo "Connection failed!";
+    die(mysqli_connect_error());
+}
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="pictures/house-frame.png">
+    <link rel="stylesheet" href="clientStyling.css">
+    <link href="https://db.onlinewebfonts.com/c/02b0cfe9a43c6fc48f54c9bf6f59dbfb?family=Domaine+Sans+Fine+Regular+Regular" rel="stylesheet">
+    <title>Home Page</title>
+</head>
+
+<body>
+    <header>
         <div class="nav">
             <img src="pictures/Negentropy copy.png" class="logo" alt="logo" height="80" width="150" style="position: relative;top: 3vh; left: 5vh;">
-            <img src="pictures/interiorDesign.png" height="30" width="300"  style="position: relative; bottom: 6vh; left: 75vh;">
+            <img src="pictures/interiorDesign.png" height="30" width="300" style="position: relative; bottom: 6vh; left: 75vh;">
         </div>
     </header>
 
-        <div class="logout">
-            <a href="homepage.html" title="Sign Out">
+    <div class="logout">
+        <a href="index.php" title="Sign Out">
             <img src="pictures/logout.png" alt="Logout">
-            </a>
-        </div>
+        </a>
+    </div>
 
-        <div class="welcome-note">
-            <h1>Welcome, <span id="clientFirstName">Amel</span>!</h1>
-        </div>
+    <?php
+    // Check if the client is logged in
+    if (!isset($_SESSION['clientID'])) {
+        // Redirect to login page or display an error message
+        header("Location: LoginPage.php");
+        exit();
+    }
 
-        <div class="client-info">
-            <h3>Client Information</h3>
-            <p><strong>First Name:</strong> Amel</p>
-            <p><strong>Last Name:</strong> Alfehaid</p>
-            <p><strong>Email:</strong> amel.alfehaid@gmail.com</p>
-        </div>
+    // Retrieve client information from the database based on the client ID
+    $client_id = $_SESSION['clientID'];
+    $query = "SELECT * FROM client WHERE clientID = $client_id";
+    $result = mysqli_query($conn, $query);
 
-    <div class="designers-container"> 
-        <div class="filter-section">
+    if (!$result) {
+        echo "Error: " . mysqli_error($conn);
+        exit();
+    }
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $client_info = mysqli_fetch_assoc($result);
+        $client_first_name = $client_info['firstName'];
+        $client_last_name = $client_info['lastName'];
+        $client_email = $client_info['emailAddress'];
+
+        echo '<div class="welcome-note">';
+        echo '<h1>Welcome, <span id="clientFirstName">' . $client_first_name . '</span>!</h1>';
+        echo '</div>';
+
+        echo '<div class="client-info">';
+        echo '<h3>Client Information</h3>';
+        echo '<p><strong>First Name:</strong> ' . $client_first_name . '</p>';
+        echo '<p><strong>Last Name:</strong> ' . $client_last_name . '</p>';
+        echo '<p><strong>Email:</strong> ' . $client_email . '</p>';
+        echo '</div>';
+    } else {
+        echo "Error: Client information not found.";
+        exit();
+    }
+    ?>
+<div class="designers-container">
+    <div class="filter-section">
+        <form method="POST" action="clientHomePage.php">
             <label for="design-category">Select Design Category:</label>
-            <select id="design-category">
+            <select id="design-category" name="design-category">
                 <option value="all">All</option>
-                <option value="Vintage/Retro Design">Vintage/Retro Design</option>
-                <option value="Luxury Interiors">Luxury Interiors</option>
-                <option value="modern">Modern</option>
-            </select>
-            <button class="FilterButton" onclick="filterDesigners()">
-            </button>
-        </div>
+                <?php
+                $query = "SELECT * FROM designcategory";
+                $result = mysqli_query($conn, $query);
 
-        <div class="designers-table">
-            <h2>Interior Designers</h2>
-            <table id="designers-table" style="width:100%">
-                <tr>
-                    <th>Designer</th>
-                    <th>Specialty</th>
-                </tr>
-                <tr>
-                    <td><!-- add the page for the request and e design portfolio page -->
-                        <a href="LamaPortfolio.html">
-                            <img src="pictures/designers logo/LM design.png" width="100px"><br>Lama Mohammed
-                        </a>
-                    </td>
-                    <td>Vintage/Retro Design</td>
-                    <td><a href="RequestDesignConsultation.html">request a design consultation</a></td>
-                </tr>
-                <tr>
-                    <td><!-- add the page for the request and e design portfolio page -->
-                        <a href="MalikPortfolio.html">
-                            <img src="pictures/designers logo/VV.png" width="100px"><br>Malik Saud
-                        </a>
-                    </td>
-                    <td>Luxury Interiors</td>
-                    <td><a href="RequestDesignConsultation.html">request a design consultation</a></td>
-                </tr>
-                <tr>
-                    <td><!-- add the page for the request and e design portfolio page -->
-                        <a href="ManarPortfolio.html">
-                            <img src="pictures/designers logo/LL.png" width="100px"><br>Manar Saqr
-                        </a>
-                    </td>
-                    <td>Modern</td>
-                    <td><a href="RequestDesignConsultation.html">request a design consultation</a></td>
-                </tr>
-            </table>
-        </div>
-        </div>  
-    <script>
-        function filterDesigners() {
-            var category = document.getElementById("design-category").value;
-            var table = document.getElementById("designers-table");
-            var rows = table.getElementsByTagName("tr");
-
-            for (var i = 1; i < rows.length; i++) {
-                var designerCategory = rows[i].getElementsByTagName("td")[1].textContent.toLowerCase();
-
-                if (category === "all" || designerCategory.toLowerCase() === category.toLowerCase()) {
-                    rows[i].style.display = "";
-                } else {
-                    rows[i].style.display = "none";
+                if ($result && mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<option value='" . $row['categoryID'] . "'>" . $row['category'] . "</option>";
+                    }
                 }
-            }
-        }
-    </script>
-        <div class="previous-requests">
-            <h2>previous Design Consultation Requests </h2>
-            <table  id="consultation-table" style="width:100%"> 
-                <tr>
-                    <th>Designer</th>
-                    <th>Room Type</th>
-                    <th>Room Dimensions</th>
-                    <th>Design Category</th>
-                    <th>Color Preferences</th>
-                    <th>Date of Request</th>
-                    <th>Status</th>
-                </tr>
-                
-                <tr>
-                    <td>
-                        <img src="pictures/designers logo/LM design.png" width="100px"><br>Lama Mohammed
-                    </td>
-                    <td>Living Room</td>
-                    <td>10' x 15'</td>
-                    <td>Modern</td>
-                    <td>Neutral colors</td>
-                    <td>2024-02-01</td>
-                    <td>Pending Consultation</td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="pictures/designers logo/ArtistryAlchemy.png" width="100px"><br>Joana AbdAlkareem
-                    </td>
-                    <td>Bed Room</td>
-                    <td>9' x 15'</td>
-                    <td>cozy</td>
-                    <td>Neutral colors</td>
-                    <td>2023-12-01</td>
-                    <td> 
-                        To achieve a cozy and serene ambiance in your bedroom, we'll focus on
-                         incorporating soft textures, warm lighting, and strategic furniture placement. 
-                         Neutral colors will serve as the foundation, creating a timeless and versatile
-                          backdrop for various decor elements. <br>
-                        <img src="pictures/cozy room.jpg" width="100px">
-                    </td>
-                </tr>
-                <td>
-                    <img src="pictures/designers logo/uniqeform.png" width="100px"><br> Sarah majed
-                </td>
-                <td>Home Office</td>
-                <td>8' x 10'</td>
-                <td>Luxury Interiors</td>
-                <td>Dark Wood and Gold</td>
-                <td>2024-01-22</td>
-                <td>Consultation Declined</td>
-              </tr>    
-            </table>
-        </div>
+                ?>
+            </select>
+            <button type="submit" class="FilterButton">Filter</button>
+        </form>
+    </div>
+    <div class="designers-table">
+        <h2>Interior Designers</h2>
+        <table id="designers-table" style="width:100%">
+            <tr>
+                <th>Designer</th>
+                <th>Specialty</th>
+                <th>Request Consultation</th>
+            </tr>
+           <?php
+           error_reporting(E_ALL);
+ini_set('display_errors', 1);
+function displayDesigners($connection, $category = null)
+{
+    $query = "SELECT d.*, c.category AS specialty 
+              FROM designer AS d
+              INNER JOIN designerspeciality AS ds ON d.designerID = ds.designerID 
+              INNER JOIN designcategory AS c ON ds.categoryID = c.categoryID";
 
-    </body>
+    if ($category && $category != 'all') {
+        $query .= " WHERE c.categoryID = $category";
+    }
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Negentropy </p>
-            <a href="contact.html" class="contact-link">
-                <i>Contact Us</i> 
-            </a>
-        </div>
-    </footer>
-    </html>
+    $result = mysqli_query($connection, $query);
+
+    if (!$result) {
+        echo "Error: " . mysqli_error($connection);
+        return;
+    }
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>";
+        // Fetch image data from database (assuming 'logoImgFileName' contains the image data)
+        $imageData = $row['logoImgFileName'];
+
+        // Convert binary data to base64 format
+        $imageBase64 = base64_encode($imageData);
+
+        // Display image in HTML
+        echo "<td><a href='designPortfolio.php?designer_id={$row['designerID']}'><img src='data:image/jpeg;base64, $imageBase64' width='100px'><br>{$row['brandName']}</a></td>";
+        echo "<td>{$row['specialty']}</td>";
+        echo "<td><a href='RequestDesignConsultation.php?designerID={$row['designerID']}'>Request a Design Consultation</a></td>";
+        echo "</tr>";
+    }
+}
+ else {
+        echo "<tr><td colspan='3'>No designers found</td></tr>";
+    }
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $selectedCategory = $_POST['design-category'];
+    displayDesigners($conn, $selectedCategory);
+} else {
+    displayDesigners($conn);
+}
+?>
+
+        </table>
+    </div>
+</div>
+
+<?php
+$client_id = $_SESSION['clientID'];
+$query = "SELECT d.logoImgFileName AS designer_logo, CONCAT(d.firstName, ' ', d.lastName) AS designer_name,
+                 rt.type AS room_type, 
+                 CONCAT(cr.roomWidth, 'x', cr.roomLength) AS room_dimensions,
+                 dc.category AS design_category,
+                 cr.colorPreferences, 
+                 cr.date AS date_of_request,
+                 rs.status
+          FROM designconsultationrequest cr
+          INNER JOIN designer d ON cr.designerID = d.designerID
+          INNER JOIN roomtype rt ON cr.roomTypeID = rt.roomID
+          INNER JOIN designcategory dc ON cr.categoryID = dc.categoryID
+          INNER JOIN requeststatus rs ON cr.statusID = rs.requestStatusID
+          WHERE cr.clientID = $client_id";
+
+$result = mysqli_query($conn, $query);
+
+if ($result && mysqli_num_rows($result) > 0) {
+    echo '<div class="previous-requests">';
+    echo '<h2>Previous Design Consultation Requests</h2>';
+    echo '<table id="consultation-table" style="width:100%">';
+    echo '<tr>';
+    echo '<th>Designer</th>';
+    echo '<th>Room Type</th>';
+    echo '<th>Room Dimensions</th>';
+    echo '<th>Design Category</th>';
+    echo '<th>Color Preferences</th>';
+    echo '<th>Date of Request</th>';
+    echo '<th>Status</th>';
+    echo '</tr>';
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>";
+        // Encode designer logo image data as base64
+        $designer_logo = base64_encode($row['designer_logo']);
+        echo "<td><img src='data:image/jpeg;base64," . $designer_logo . "' width='100px'><br>" . $row['designer_name'] . "</td>";
+        echo "<td>" . $row['room_type'] . "</td>";
+        echo "<td>" . $row['room_dimensions'] . "</td>";
+        echo "<td>" . $row['design_category'] . "</td>";
+        echo "<td>" . $row['colorPreferences'] . "</td>";
+        echo "<td>" . $row['date_of_request'] . "</td>";
+        echo "<td>" . $row['status'] . "</td>";
+        echo "</tr>";
+    }
+
+    echo '</table>';
+    echo '</div>';
+} else {
+    echo "<div class='previous-requests'>";
+    echo "<h2>Previous Design Consultation Requests</h2>";
+    echo "<p>No consultation requests found</p>";
+    echo "</div>";
+}
+?>
+
+
+</body>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 Negentropy </p>
+        <a href="contact.html" class="contact-link">
+            <i>Contact Us</i>
+        </a>
+    </div>
+</footer>
+
