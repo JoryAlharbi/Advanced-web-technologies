@@ -1,0 +1,130 @@
+<?php
+// include database connection
+require 'include/config.inc.php';
+session_start(); // Starting the session
+ini_set('display_errors', 1);
+
+$pname = ""; // Initialize $pname variable to avoid undefined variable warning
+$desc = ""; // Initialize $desc variable to avoid undefined variable warning
+
+if (!isset($_SESSION['designerID']) || $_SESSION['userType'] != 'designer') {
+    header("Location:homepage.php");
+}
+
+if (isset($_GET['projectID'])) {
+    $projectid = $_GET['projectID'];
+
+    $sql = "SELECT * FROM designportoflioproject WHERE portfolioID='$projectid' ";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $pname = $row['projectName'];
+            $dcat = $row['categoryID'];
+            $desc = $row['description'];
+            $pimg = $row['projectImgFileName'];
+        }
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Update</title>
+    <link rel="logo" href="pictures/logo.jpg">
+    <link rel="stylesheet" href="addtion-update.css">
+    <link rel="icon" type="image/png" href="pictures/house-frame.png">
+    <link href="https://db.onlinewebfonts.com/c/02b0cfe9a43c6fc48f54c9bf6f59dbfb?family=Domaine+Sans+Fine+Regular+Regular" rel="stylesheet">
+    <style>
+        .rtrivimg {
+            width: 20%;
+            height: 30%;
+        }
+
+        #img {
+            height: 20%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="breadcrumbs">
+        <a href="DesignerHomepage.html">Home</a> &gt; <span>Project Update</span>
+    </div>
+
+    <main>
+        <div class="container">
+            <div class="form">
+                <div class="form-design">
+                    <img src="picture1/pictures/Negentropy copy.png" alt="">
+                </div>
+                <div class="projectform">
+                    <form method="POST" action="update.php" id="newproject" enctype="multipart/form-data">
+                        <h2 class="title">Update Project</h2>
+                        <input type="hidden" name="projectid" value="<?= $projectid ?>">
+                        <div class="input">
+                            <label for="ProjectName">Project Name :</label>
+                            <input type="text" name="ProjectName" value="<?= $pname ?>" id="ProjectName" placeholder="Farmhouse Kitchen" class="input-box">
+                        </div>
+                        <div class="input">
+                            <label for="ProjectImage">Project Image :</label>
+                            <input type="file" name="ProjectImage" id="ProjectImage" class="input-box">
+                            <div id="img">
+                                <img src="image/<?php echo $pimg; ?>" alt="project img" class="rtrivimg">
+                            </div>
+                        </div>
+                        <div class="input">
+                            <label for="Category">Design Category :</label>
+                            <select name="Category" value="<?= $dcat ?>">
+                                <?php
+                                $error = mysqli_connect_error();
+                                if ($error != null) {
+                                    die("failed connection");
+                                } else {
+                                    $sql = "SELECT * FROM designcategory";
+                                    $result = mysqli_query($conn, $sql);
+                                    if ($result) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            echo "<option value=" . $row['categoryID'] . ">" . $row['category'] . "</option>";
+                                        }
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="textarea">
+                            <label for="Description">Description :</label><br>
+                            <textarea name="Description"><?= $desc ?></textarea>
+                        </div>
+                        <p>save changes!</p>
+                        <input type="submit" onclick="redirect()" value="Save" id="save">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function redirect() {
+            window.location.href = "DesignerHomepage.php";
+        }
+    </script>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Negentropy</p>
+            <a href="mailto:Negentropy@gmail.com" title="Click to send an email" class="contact-link">
+                <i>Email Us</i>
+                (Negentropy@gmail.com)
+                <br>
+            </a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
