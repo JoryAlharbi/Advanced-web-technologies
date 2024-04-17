@@ -1,0 +1,266 @@
+<?php
+require 'include/config.inc.php';
+session_start(); // Starting the session
+
+// Check if the user is logged in as a designer
+if (!isset($_SESSION['designerID']) || $_SESSION['userType'] != 'designer') {
+    header("Location: homepage.php");
+    exit; // It's good practice to exit after a header redirect
+}
+
+if (isset($_GET['logout'])) {
+    // Unset all session variables
+    $_SESSION = array();
+
+    // Destroy the session
+    session_destroy();
+
+    // Redirect to the homepage or login page
+    header("Location: homepage.php");
+    exit; // It's good practice to exit after a header redirect
+}
+
+$designerID = $_SESSION['designerID'];
+
+// Retrieve designer's information
+$queryDesigner = "SELECT firstName, lastName, emailAddress, brandName, logoImgFileName FROM Designer WHERE designerID = $designerID";
+$resultDesigner = mysqli_query($conn, $queryDesigner);
+if (!$resultDesigner) {
+    die("Designer query failed: " . mysqli_error($conn));
+}
+$designerInfo = mysqli_fetch_assoc($resultDesigner);
+
+// Retrieve designer's projects
+$queryProjects = "SELECT portfolioID, categoryID, projectName, projectImgFileName, description FROM DesignPortoflioProject WHERE designerID = $designerID";
+$resultProjects = mysqli_query($conn, $queryProjects);
+if (!$resultProjects) {
+    die("Projects query failed: " . mysqli_error($conn));
+}
+
+// Retrieve consultation requests for the designer
+$queryRequests = "SELECT 
+    C.firstName AS ClientFirstName,
+    C.lastName AS ClientLastName,
+    RT.type AS RoomType,
+    DCR.roomWidth AS RoomWidth,
+    DCR.roomLength AS RoomLength,
+    DC.category AS DesignCategory,
+    DCR.colorPreferences,
+    DCR.date AS ConsultationDate
+FROM 
+    DesignConsultationRequest DCR
+JOIN 
+    Client C ON DCR.clientID = C.clientid
+JOIN 
+    RoomType RT ON DCR.roomTypeID = RT.roomid
+JOIN 
+    DesignCategory DC ON DCR.CategoryID = DC.categoryid
+WHERE 
+    DCR.designerID = $designerID";
+
+
+$resultRequests = mysqli_query($conn, $queryRequests);
+if (!$resultRequests) {
+    die("Consultation requests query failed: " . mysqli_error($conn));
+}
+
+// Determine the time of day for the greeting
+$timeOfDay = "";
+$hour = date('H');
+if ($hour < 12) {
+    $timeOfDay = "Good morning";
+} elseif ($hour < 18) {
+    $timeOfDay = "Good afternoon";
+} else {
+    $timeOfDay = "Good evening";
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="pictures/house-frame.png">
+    <title>Designer Homepage</title>
+    <link rel="stylesheet" href="DesignerHomepageStyles.css">
+    <link href="https://db.onlinewebfonts.com/c/02b0cfe9a43c6fc48f54c9bf6f59dbfb?family=Domaine+Sans+Fine+Regular+Regular" rel="stylesheet">
+</head>
+<body>
+    <div class="blur-overlay">
+        <header>
+            <div class="nav">
+                <a href="index.php">
+                    <img src="pictures/Negentropy copy.png" class="logo" alt="logo" title="logo" height="80" width="150" style="position: relative;top: 3vh; left: 5vh;">
+                </a>
+                <img src="pictures/interiorDesign.png" height="30" width="300" style="position: relative; bottom: 6vh; left: 83vh;">
+                <a href="index.php?logout=true" title="Sign Out">
+                    <img id="logout" src="pictures/logout.png" alt="Logout">
+                </a>
+            </div>
+            <div id="greeting">
+                <p><?php echo $timeOfDay . ", " . $designerInfo['firstName']; ?></p>
+            </div>
+        </header>
+        <main>
+            <div id="Designer">
+                <img src="<?php echo $designerInfo['logoImgFileName']; ?>" alt="Your Logo" id="designerLogo">
+                <div id="designerInfo">
+                    <h2 id="aboutDesigner"> ABOUT YOU </h2>
+                    <p>
+                        <?php echo $designerInfo['firstName'] . " " . $designerInfo['lastName']; ?><br>
+                        Owner of: <?php echo $designerInfo['brandName']; ?><br>
+                        Email: <?php echo $designerInfo['emailAddress']; ?>
+                    </p>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <h2 class="Tables-Title"> Design Portfolio </h2> <br>
+            <div id="container">
+                <ul class="table">
+                    <li class="table-header">
+                        <div class="col col-1">PROJECT NAME</div>
+                        <div class="col col-2">IMAGE</div>
+                        <div class="col col-3">DESIGN CATEGORY</div>
+                        <div class="col col-4">DESCRIPTION</div>
+                        
+                    </li>
+                  <?php while ($project = mysqli_fetch_assoc($resultProjects)) : ?>
+    <li class="table-row">
+        <div class="col col-1"><?php echo $project['projectName']; ?></div>
+        <div class="col col-2"><img src="<?php echo $project['projectImgFileName']; ?>" alt="Project Image" class="DesignsPics"></div>
+        <div class="col col-3">
+            <?php
+            $categoryID = $project['categoryID'];
+            $categoryQuery = "SELECT category FROM DesignCategory WHERE categoryID = $categoryID";
+            $categoryResult = mysqli_query($conn, $categoryQuery);
+            if ($categoryResult && mysqli_num_rows($categoryResult) > 0) {
+                $category = mysqli_fetch_assoc($categoryResult)['category'];
+                echo $category;
+            } else {
+                echo "Unknown";
+            }
+            ?>
+        </div>
+        <div class="col col-4"><?php echo $project['description']; ?></div>
+        <div class="col">
+           <button onclick="editProject(<?php echo $project['portfolioID']; ?>)">Edit</button>
+            <button onclick="deleteProject(<?php echo $project['portfolioID']; ?>)">Delete</button>
+        </div>
+    </li>
+<?php endwhile; ?>
+                </ul>
+            </div>
+            <br>
+            
+   <div class="col col-5">
+    <button onclick="redirectToNewProjectPage()">Add Project</button> <!-- Add button -->
+</div>
+
+<script>
+
+    function editProject(projectID) {
+        // Redirect to the edit project page with the project ID
+        window.location.href = "Updateproject.php?projectID=" + projectID;
+    }
+
+
+function deleteProject(projectID) {
+    if (confirm("Are you sure you want to delete this project?")) {
+        // Send an AJAX request to delete the project
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "delete_project.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Reload the page to reflect the changes after deletion
+                window.location.reload();
+            }
+        };
+        xhr.send("projectID=" + projectID);
+    }
+}
+
+ function redirectToNewProjectPage() {
+        window.location.href = "Additionproject.php"; 
+    }
+</script>
+
+
+            <hr>
+            <br>
+            
+            <h2 class="Tables-Title"> Design Consultation Requests </h2> <br>
+            <div id="container">
+                <ul class="table">
+                    <li class="table-header">
+                        <div class="col col-1">CLIENT</div>
+                        <div class="col col-2">ROOM</div>
+                        <div class="col col-3">DIMENSIONS</div>
+                        <div class="col col-4">DESIGN CATEGORY</div>
+                        <div class="col col-5 color">COLOR PREFERENCES</div>
+                        <div class="col col-6 date">DATE</div>
+                    </li>
+                    
+<?php while ($project = mysqli_fetch_assoc($resultProjects)) : ?>
+    <li class="table-row">
+        <div class="col col-1"><?php echo $project['projectName']; ?></div>
+        <div class="col col-2"><img src="<?php echo $project['projectImgFileName']; ?>" alt="Project Image" class="DesignsPics"></div>
+        <div class="col col-3">
+            <?php
+            $categoryID = $project['categoryID'];
+            $categoryQuery = "SELECT category FROM DesignCategory WHERE categoryID = $categoryID";
+            $categoryResult = mysqli_query($conn, $categoryQuery);
+            if ($categoryResult && mysqli_num_rows($categoryResult) > 0) {
+                $category = mysqli_fetch_assoc($categoryResult)['category'];
+                echo $category;
+            } else {
+                echo "Unknown";
+            }
+            ?>
+        </div>
+        <div class="col col-4"><?php echo $project['description']; ?></div>
+        <div class="col">
+            <button onclick="redirectToConsultationPage(<?php echo $project['portfolioID']; ?>)">Provide Consultation</button>
+            <button onclick="declineConsultation(<?php echo $project['portfolioID']; ?>)">Decline Consultation</button>
+        </div>
+    </li>
+<?php endwhile; ?>
+    
+    <script>
+        
+        
+function declineConsultation(projectID) {
+    if (confirm("Are you sure you want to decline this consultation?")) {
+        // Send an AJAX request to update the status
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "declinestatus.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Reload the page to reflect the changes after updating status
+                window.location.reload();
+            }
+        };
+        xhr.send("id=" + projectID + "&statusID=80004"); // Set status to "declined"
+    }
+}     
+        
+        
+        </script>
+                </ul>
+            </div>
+        </main>
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2024 Negentropy </p>
+                <a href="contact.html" class="contact-link">
+                    <i>Contact Us</i>
+                </a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
