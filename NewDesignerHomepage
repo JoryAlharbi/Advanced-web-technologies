@@ -39,6 +39,7 @@ if (!$resultProjects) {
 
 // Retrieve consultation requests for the designer
 $queryRequests = "SELECT 
+    DCR.consultationRequestID AS requestID,
     C.firstName AS ClientFirstName,
     C.lastName AS ClientLastName,
     RT.type AS RoomType,
@@ -56,8 +57,8 @@ JOIN
 JOIN 
     DesignCategory DC ON DCR.CategoryID = DC.categoryid
 WHERE 
-    DCR.designerID = $designerID";
-
+    DCR.designerID = $designerID
+    AND DCR.statusID = 80003";
 
 $resultRequests = mysqli_query($conn, $queryRequests);
 if (!$resultRequests) {
@@ -203,55 +204,62 @@ function deleteProject(projectID) {
                         <div class="col col-5 color">COLOR PREFERENCES</div>
                         <div class="col col-6 date">DATE</div>
                     </li>
-                    
-<?php while ($project = mysqli_fetch_assoc($resultProjects)) : ?>
-    <li class="table-row">
-        <div class="col col-1"><?php echo $project['projectName']; ?></div>
-        <div class="col col-2"><img src="<?php echo $project['projectImgFileName']; ?>" alt="Project Image" class="DesignsPics"></div>
-        <div class="col col-3">
+
+
+<?php mysqli_data_seek($resultRequests, 0); // Reset the result pointer to the beginning ?>
+
 <?php while ($request = mysqli_fetch_assoc($resultRequests)) : ?>
-    <li class="table-row">
+    <li id="request_<?php echo $request['requestID']; ?>" class="table-row"> <!-- Add id attribute with dynamic value -->
         <div class="col col-1"><?php echo $request['ClientFirstName'] . " " . $request['ClientLastName']; ?></div>
         <div class="col col-2"><?php echo $request['RoomType']; ?></div>
         <div class="col col-3"><?php echo $request['RoomWidth'] . "x" . $request['RoomLength']; ?></div>
         <div class="col col-4"><?php echo $request['DesignCategory']; ?></div>
         <div class="col col-5 color"><?php echo $request['colorPreferences']; ?></div>
         <div class="col col-6 date"><?php echo $request['ConsultationDate']; ?></div>
-    </li>
-<?php endwhile; ?>
-        </div>
-        <div class="col col-4"><?php echo $project['description']; ?></div>
         <div class="col">
-            <button onclick="redirectToConsultationPage(<?php echo $project['portfolioID']; ?>)">Provide Consultation</button>
-            <button onclick="declineConsultation(<?php echo $project['portfolioID']; ?>)">Decline Consultation</button>
+            <button onclick="provideConsultation(<?php echo $request['requestID']; ?>)">Provide Consultation</button>
+            <button onclick="declineConsultation(<?php echo $request['requestID']; ?>)">Decline Consultation</button>
         </div>
     </li>
 <?php endwhile; ?>
+
     
     
     
     
-    <script>
-        
-        
-function declineConsultation(projectID) {
+<script>
+    function provideConsultation(projectID) {
+        // Redirect to the consultation page with the project ID
+        window.location.href = "DesignerConsultaion.php?projectID=" + projectID;
+    }
+
+function declineConsultation(requestID) {
     if (confirm("Are you sure you want to decline this consultation?")) {
         // Send an AJAX request to update the status
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "declinestatus.php", true);
+        xhr.open("POST", "declineStatus.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
-                // Reload the page to reflect the changes after updating status
-                window.location.reload();
+                // Check if the request was successful
+                if (xhr.responseText.trim() == "success") {
+                    // Remove the table row
+                    var row = document.getElementById("request_" + requestID);
+                    if (row) {
+                        row.parentNode.removeChild(row);
+                    }
+                } else {
+                    // Alert the user if there was an error
+                    alert("Failed to decline consultation.");
+                }
             }
         };
-        xhr.send("id=" + projectID + "&statusID=80004"); // Set status to "declined"
+        xhr.send("id=" + requestID + "&statusID=80004"); // Set status to "declined"
     }
-}     
-        
-        
-        </script>
+}
+
+
+</script>
                 </ul>
             </div>
         </main>
