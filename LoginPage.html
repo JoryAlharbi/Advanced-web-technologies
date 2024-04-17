@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+    
+     <?php 
+     require "include/config.inc.php";
+     session_start();
+    ?> 
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleSheet.css">
+    <link rel="stylesheet" href="login.css">
     <link rel="icon" type="image/png" href="pictures/house-frame.png"> 
     <link href="https://db.onlinewebfonts.com/c/02b0cfe9a43c6fc48f54c9bf6f59dbfb?family=Domaine+Sans+Fine+Regular+Regular" rel="stylesheet">
 
@@ -13,7 +19,9 @@
     <div class="blur-overlay">
         <header>
             <div class="nav">
-                <img src="pictures/Negentropy copy.png" class="logo" alt="logo" height="80" width="150" style="position: relative;top: 3vh; left: 5vh;">
+                 <a  href = "index.php">
+        <img src="pictures/Negentropy copy.png" class="logo" alt="logo" title="logo" height="80" width="150" style="position: relative;top: 3vh; left: 5vh;">
+        </a>
                 <img src="pictures/interiorDesign.png" height="30" width="300"  style="position: relative; bottom: 6vh; left: 75vh;">
             </div>
         
@@ -24,7 +32,7 @@
         <div id="login">
             <h1>Welcome!</h1>
     
-            <form id="loginForm">
+            <form action="include/login.inc.php" method="POST" id="loginForm">
                 <h2>Login</h2>
 
                 <label for="email">Email:</label>
@@ -34,12 +42,12 @@
                 <input type="password" id="password" name="password" required>
 
                 <label for="userType">User Type:</label>
-                <select id="userType" name="userType" required>
+                <select id="userType" name="userType">
                     <option value="designer">Designer</option>
                     <option value="client">Client</option>
                 </select>
 
-                <button type="button" onclick="login()">Login</button>
+                <button type="submit" name="login">Login</button>
             </form>
             <h5 onclick="signup()" > click here to create an account </h5>
 
@@ -49,23 +57,10 @@
    
 
     <script>
-        function login() {
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
-            var userType = document.getElementById('userType').value;
-
-            if (email && password && userType) {
-                if (userType === 'designer') {
-                    window.location.href = 'DesignerHomepage.html';
-                } else if (userType === 'client') {
-                    window.location.href = 'clientHomePage.html';
-                }
-            } else {
-                alert('Please fill in all fields.');
-            }
-        }
+        
+        
         function signup() {
-         window.location.href = 'signup.html';
+         window.location.href = 'signup.php';
               
         }
     </script>
