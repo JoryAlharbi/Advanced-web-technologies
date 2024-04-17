@@ -1,0 +1,26 @@
+<?php
+// include database connection
+require 'include/config.inc.php';
+
+// check if the request contains the necessary parameters
+if (isset($_POST['id']) && isset($_POST['statusID'])) {
+    // sanitize input to prevent SQL injection
+    $requestId = mysqli_real_escape_string($conn, $_POST['id']);
+    $statusID = mysqli_real_escape_string($conn, $_POST['statusID']);
+
+    // query to update the status of the consultation request
+    $updateQuery = "UPDATE DesignConsultationRequest SET statusID = '$statusID' WHERE consultationRequestID = '$requestId'";
+
+    // execute the update query
+    $updateResult = mysqli_query($conn, $updateQuery);
+
+    // check if the update was successful
+    if ($updateResult) {
+        echo "success"; // Return success message
+    } else {
+        echo "Error updating status: " . mysqli_error($conn); // Return error message
+    }
+} else {
+    echo "Invalid request"; // Return invalid request message
+}
+?>
