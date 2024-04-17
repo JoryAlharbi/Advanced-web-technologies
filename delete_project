@@ -1,0 +1,26 @@
+<?php
+require 'include/config.inc.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["projectID"])) {
+    $projectID = $_POST["projectID"];
+
+    // Prepare a DELETE statement
+    $stmt = $conn->prepare("DELETE FROM DesignPortoflioProject WHERE portfolioID = ?");
+    $stmt->bind_param("i", $projectID);
+
+    // Execute the statement
+    if ($stmt->execute()) {
+        // Deletion successful
+        echo "Project deleted successfully";
+    } else {
+        // Error occurred
+        echo "Error deleting project: " . $conn->error;
+    }
+
+    // Close the statement
+    $stmt->close();
+} else {
+    // If projectID is not provided or the request method is not POST, return an error message
+    echo "Invalid request";
+}
+?>
