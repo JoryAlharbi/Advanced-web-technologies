@@ -209,17 +209,16 @@ function deleteProject(projectID) {
         <div class="col col-1"><?php echo $project['projectName']; ?></div>
         <div class="col col-2"><img src="<?php echo $project['projectImgFileName']; ?>" alt="Project Image" class="DesignsPics"></div>
         <div class="col col-3">
-            <?php
-            $categoryID = $project['categoryID'];
-            $categoryQuery = "SELECT category FROM DesignCategory WHERE categoryID = $categoryID";
-            $categoryResult = mysqli_query($conn, $categoryQuery);
-            if ($categoryResult && mysqli_num_rows($categoryResult) > 0) {
-                $category = mysqli_fetch_assoc($categoryResult)['category'];
-                echo $category;
-            } else {
-                echo "Unknown";
-            }
-            ?>
+<?php while ($request = mysqli_fetch_assoc($resultRequests)) : ?>
+    <li class="table-row">
+        <div class="col col-1"><?php echo $request['ClientFirstName'] . " " . $request['ClientLastName']; ?></div>
+        <div class="col col-2"><?php echo $request['RoomType']; ?></div>
+        <div class="col col-3"><?php echo $request['RoomWidth'] . "x" . $request['RoomLength']; ?></div>
+        <div class="col col-4"><?php echo $request['DesignCategory']; ?></div>
+        <div class="col col-5 color"><?php echo $request['colorPreferences']; ?></div>
+        <div class="col col-6 date"><?php echo $request['ConsultationDate']; ?></div>
+    </li>
+<?php endwhile; ?>
         </div>
         <div class="col col-4"><?php echo $project['description']; ?></div>
         <div class="col">
@@ -228,6 +227,9 @@ function deleteProject(projectID) {
         </div>
     </li>
 <?php endwhile; ?>
+    
+    
+    
     
     <script>
         
