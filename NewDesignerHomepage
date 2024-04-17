@@ -104,8 +104,9 @@ if ($hour < 12) {
             </div>
         </header>
         <main>
-            <div id="Designer">
-                <img src="<?php echo $designerInfo['logoImgFileName']; ?>" alt="Your Logo" id="designerLogo">
+           <div id="Designer">
+        <img src="image/<?php echo $designerInfo['logoImgFileName']; ?>" alt="Designer Logo" class="rtrivimg">
+                  
                 <div id="designerInfo">
                     <h2 id="aboutDesigner"> ABOUT YOU </h2>
                     <p>
